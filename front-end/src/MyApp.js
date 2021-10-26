@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 // import Table from './Table'
-import Form from './logIn';
+import Form from './CreateAccount';
 import axios from 'axios';
 
 function MyApp() {
@@ -28,7 +28,6 @@ function MyApp() {
 
 
   async function removeOneCharacter(index) {
-    //.then is to fetch the updated list and set the new list as result
     makeDeleteCall(characters[index]['_id']).then(result => {
     if (result.status === 204){
       fetchAll().then(result => {
@@ -46,7 +45,6 @@ function MyApp() {
       return response.data.users_list;
     }
     catch (error) {
-      //We're not handling errors. Just logging into the console.
       console.log(error);
       return false;
     }
