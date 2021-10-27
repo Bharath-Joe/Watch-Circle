@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 function CreateAccount(props) {
   const [person, setPerson] = useState(
     { name: '', password: '', confirm_password: ''}
@@ -16,20 +17,25 @@ function CreateAccount(props) {
     }
   }
 
-  function handleConfirmPassoword(event) {
+function handleConfirmPassoword(event) {
     person['confirm_password'] = event.target.value
+  };
 
-  }
   function loggedIn() {
-    if (person['password'] === person['confirm_password'])
-      props.handleSubmit(person);
+    var password = person['password'];
+    var confirmPassword = person['confirm_password'];
+    if(password !== confirmPassword)
+      alert("Passwords don't match!")
     else
-      console.log("Passwords need to match.") 
+      props.handleSubmit(person);
     setPerson({ name: '', password: '', confirm_password: ''});
   }
 
-  return (
+  return ( 
     <form>
+      <head>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+      </head>
       <center>
         <img src="https://docs.google.com/drawings/d/e/2PACX-1vR6EnoPyocFiar4BWVpGHrM3PE1Dcfa8lW-PpgsDoV87oGPFct9cH0P2igtEFJTq8qTPSABjCl1V9lC/pub?w=960&amp;h=720" alt=""width="290" height="225" />
         <h1> Welcome to WatchCircle </h1> 
@@ -53,6 +59,7 @@ function CreateAccount(props) {
         id="confirm_password"
         value={person.confirm_password}
         onChange={handleConfirmPassoword}/>
+      <div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
       <center>
         <input type="button" value="Sign Up" onClick={loggedIn} />
       </center>
