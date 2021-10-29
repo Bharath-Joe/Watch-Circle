@@ -1,13 +1,13 @@
 # Watch-Circle <br />
 ## CSC307 project <br />
 
-### Backend
+### Frontend
 1. Make sure Node.js and npm are on the computer with the npm -version command.<br />
 2. npm install <br />
 3. npm install axios <br />
 4. npm start <br />
 
-### Frontend
+### Backend
 1. create virtual environment and install flask <br />
 2. pip install pymongo <br />
 3. export FLASK_APP=sample_backend.py <br />
