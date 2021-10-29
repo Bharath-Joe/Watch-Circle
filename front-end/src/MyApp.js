@@ -13,11 +13,12 @@ function MyApp() {
   }, []);
   function updateList(person) { 
     makePostCall(person).then( result => {
-      console.log(result.status);
       if(result.status === 201){
         console.log(result.data)
         setCharacters([...characters, result.data]);
       }
+      else
+        alert("Username already exists!");
     });
  }
   return (
@@ -64,12 +65,6 @@ function MyApp() {
 
 
   async function makePostCall(person){
-    for (let index = 0; index < characters.length; index++) {
-      if(person['name'] === characters[index]['name']){
-        alert("Username already exists.")
-        return false
-      }
-    }
     try {
       const response = await axios.post('http://localhost:5000/users', person);
       return response;
