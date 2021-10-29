@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {Link } from "react-router-dom";
+
 
 
 function CreateAccount(props) {
@@ -57,8 +59,19 @@ function handleConfirmPassoword(event) {
       <center>
         <input type="button" value="Sign Up" onClick={loggedIn} />
       </center>
-    </form>
 
+      <div>
+      <center>
+        
+        <Link to="/"><button>
+          Go to Page login
+        </button>
+        </Link>
+        </center>
+      </div>
+    </form>
+      
+    
   );
 
 }
