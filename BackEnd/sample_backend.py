@@ -37,7 +37,7 @@ def get_users():
         return {"users_list": users}
     elif request.method == 'POST':
         userToAdd = request.get_json()
-        if User().find_by_name(userToAdd['name']):
+        if User().find_by_name(userToAdd['name']) or userToAdd['name'] == "":
             resp = jsonify(), 401
             return resp
         newUser = User(userToAdd)
@@ -65,14 +65,3 @@ def get_user(id):
             return resp
         else:
             return jsonify({"error": "User not found"}), 404
-
-
-# def generateID():
-#     id = ""
-#     for i in range(3):
-#         char = random.choice(string.ascii_letters)
-#         id = id + char.lower()
-#     for i in range(3):
-#         num = randrange(10)
-#         id = id + str(num)
-#     return id

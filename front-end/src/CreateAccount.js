@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import {Link } from "react-router-dom";
-
-
+import { useHistory } from 'react-router-dom';
 
 function CreateAccount(props) {
+  let history = useHistory();
   const [person, setPerson] = useState(
     { name: '', password: '', confirm_password: ''}
   );
@@ -34,8 +33,7 @@ function handleConfirmPassoword(event) {
   return ( 
     <form>
       <center>
-        <img src="https://docs.google.com/drawings/d/e/2PACX-1vR6EnoPyocFiar4BWVpGHrM3PE1Dcfa8lW-PpgsDoV87oGPFct9cH0P2igtEFJTq8qTPSABjCl1V9lC/pub?w=960&amp;h=720" alt=""width="290" height="225" />
-        <h1> Welcome to WatchCircle </h1> 
+        <h1> Create Account </h1> 
       </center>
       <label htmlFor="name">Username</label>
       <input type="text"
@@ -59,20 +57,10 @@ function handleConfirmPassoword(event) {
       <center>
         <input type="button" value="Sign Up" onClick={loggedIn} />
       </center>
-
-      <div>
       <center>
-        
-        <Link to="/"><button>
-          Go to Page login
-        </button>
-        </Link>
-        </center>
-      </div>
+        <input type="button" value="&#8592; Back to Log In" onClick={() => {history.push('/');}} />
+      </center>
     </form>
-      
-    
   );
-
 }
 export default CreateAccount;

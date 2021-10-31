@@ -1,19 +1,13 @@
-import React, { useState } from 'react';
-import Form from './CreateAccount';
-import {BrowserRouter as Router, Switch, Route, Link, userRouteMatch, useParams} from "react-router-dom";
-
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 
 function LogIn(props){
+    let history = useHistory();
 
     function goToHome(){
 
     }
-
-    function goToCreateAccount(){
-        
-    }
-
     return(
         <form>
             <center>
@@ -30,18 +24,12 @@ function LogIn(props){
             id="password"
             style={{float : 'right'}}/>
             <center>
-            <input type="button" value="Log In" onClick={goToHome} />
+                <input type="button" value="Log In" onClick={goToHome} />
             </center>
-            
-            <div>
             <center>
-                
-                <Link to="/createAccount"><button>
-                Go to Page CreateAccount
-                </button>
-                </Link>
-                </center>
-            </div>
+                <input type="button" value="Create Account &#8594;" onClick={() => {history.push('/CreateAccount');
+            }} />
+            </center>
             </form>
 
     );

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-// import Table from './Table'
-import Form from './CreateAccount';
+import Form from './LogIn';
+import Form2 from './CreateAccount';
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 
 function MyApp() {
@@ -18,27 +19,20 @@ function MyApp() {
         setCharacters([...characters, result.data]);
       }
       else
-        alert("Username already exists!");
+        alert("Username already exists.");
     });
  }
   return (
     <div className="container">
-      <Form handleSubmit={updateList} />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Form} />
+          <Form2 handleSubmit={updateList} />
+          <Route exact path="/CreateAccount" component={Form2}/>
+        </Switch>
+      </Router>
     </div>
   )
-
-
-  async function removeOneCharacter(index) {
-    makeDeleteCall(characters[index]['_id']).then(result => {
-    if (result.status === 204){
-      fetchAll().then(result => {
-        if (result)
-          setCharacters(result);
-        });
-      }
-    })
-  }
-
 
   async function fetchAll() {
     try {
@@ -52,16 +46,16 @@ function MyApp() {
   }
 
 
-  async function makeDeleteCall(id) {
-    try {
-      const response = await axios.delete("http://localhost:5000/users/" + id);
-      return response;
-   }
-   catch (error) {
-      console.log(error);
-      return false;
-   }
-  }
+  // async function makeDeleteCall(id) {
+  //   try {
+  //     const response = await axios.delete("http://localhost:5000/users/" + id);
+  //     return response;
+  //  }
+  //  catch (error) {
+  //     console.log(error);
+  //     return false;
+  //  }
+  // }
 
 
   async function makePostCall(person){
