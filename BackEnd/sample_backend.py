@@ -50,20 +50,11 @@ def get_users():
         return resp
 
 
-# @app.route('/users/<id>', methods=['GET', 'DELETE'])
-# def get_user(id):
-#     if request.method == 'GET':
-#        # update for db access
-#         user = User({"_id": id})
-#         if user.reload():
-#             return user
-#         else:
-#             return jsonify({"error": "User not found"}), 404
-#     elif request.method == 'DELETE':
-#         user = User({"_id": id})
-#         if user.remove():
-#             # 204 is the default code for a normal response, no other input returned
-#             resp = jsonify({}), 204
-#             return resp
-#         else:
-#             return jsonify({"error": "User not found"}), 404
+@app.route('/users/<username>', methods=['GET', 'DELETE'])
+def get_user(username):
+    if request.method == 'GET':
+        user = User().find_by_name(username)
+        if user:
+            return jsonify(user)
+        else:
+            return jsonify({"error": "User not found"}), 404
