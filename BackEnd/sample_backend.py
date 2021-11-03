@@ -11,9 +11,9 @@ from model_mongodb import User
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+# @app.route('/')
+# def hello_world():
+#     return 'Hello, World!'
 
 
 users = {
@@ -24,6 +24,7 @@ users = {
 @app.route('/users', methods=['GET', 'POST'])
 def get_users():
     if request.method == 'GET':
+        print("GET if statement")
         search_username = request.args.get('name')
         search_job = request.args.get('password')
         if search_username and search_job:
@@ -36,6 +37,7 @@ def get_users():
             users = User().find_all()
         return {"users_list": users}
     elif request.method == 'POST':
+        print("POST else statement")
         userToAdd = request.get_json()
         if User().find_by_name(userToAdd['name']) or userToAdd['name'] == "":
             resp = jsonify(), 401
@@ -48,20 +50,20 @@ def get_users():
         return resp
 
 
-@app.route('/users/<id>', methods=['GET', 'DELETE'])
-def get_user(id):
-    if request.method == 'GET':
-       # update for db access
-        user = User({"_id": id})
-        if user.reload():
-            return user
-        else:
-            return jsonify({"error": "User not found"}), 404
-    elif request.method == 'DELETE':
-        user = User({"_id": id})
-        if user.remove():
-            # 204 is the default code for a normal response, no other input returned
-            resp = jsonify({}), 204
-            return resp
-        else:
-            return jsonify({"error": "User not found"}), 404
+# @app.route('/users/<id>', methods=['GET', 'DELETE'])
+# def get_user(id):
+#     if request.method == 'GET':
+#        # update for db access
+#         user = User({"_id": id})
+#         if user.reload():
+#             return user
+#         else:
+#             return jsonify({"error": "User not found"}), 404
+#     elif request.method == 'DELETE':
+#         user = User({"_id": id})
+#         if user.remove():
+#             # 204 is the default code for a normal response, no other input returned
+#             resp = jsonify({}), 204
+#             return resp
+#         else:
+#             return jsonify({"error": "User not found"}), 404
