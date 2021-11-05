@@ -5,7 +5,7 @@ import MyApp from "./MyApp";
 test("renders learn react link", () => {
   render(<MyApp />);
   // successful test:
-  const linkElement = screen.getAllByText(/Log In/i);
+  const linkElement = screen.getAllByText(/Username/i);
   // failing test:
   // const linkElement = screen.getByText(/Painter/i);
   expect(linkElement).toBeInTheDocument();
