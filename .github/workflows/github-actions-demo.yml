@@ -29,6 +29,8 @@ jobs:
       # fix working directory
       - run: npm ci
         working-directory: ./front-end
+      - run: npm install --save-dev @testing-library/jest-dom
+        working-directory: ./front-end
       - run: npm run build --if-present
         working-directory: ./front-end
       - run: npm test
