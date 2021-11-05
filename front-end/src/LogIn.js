@@ -11,6 +11,18 @@ function LogIn(props){
         const password=e.target.password.value;
         console.log(username)
         console.log(password)
+        try {
+            const response = axios.get('http://localhost:5000/users/' + username + '/' + password);
+            console.log(response.status)
+            alert("asdf")
+            // If status is 201 then go to a new page
+            // If status is 404 then display "Invalid Credentials"
+          }
+          catch (error) {
+            console.log(error);
+            alert("Invalid Credentials")
+            return false;
+          }
       }
       
     return(
