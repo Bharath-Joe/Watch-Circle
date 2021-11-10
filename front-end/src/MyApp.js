@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-//import Form from './LogIn';
+import Form from './LogIn';
 import Form2 from './CreateAccount';
 import Form3 from './Shows';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 
 import Table from "./Showlist";
-import Form from "./Form";
+//import Form from "./Form";
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);
@@ -26,7 +26,7 @@ function MyApp() {
         alert("Username already exists.");
     });
  }
- /*
+ 
   return (
     <div className="container">
       <Router>
@@ -35,13 +35,13 @@ function MyApp() {
           <Route exact path="/Shows" component={Form3} />
           <Form2 handleSubmit={updateList} />
           <Route exact path="/CreateAccount" component={Form2}/>
-          
 
         </Switch>
       </Router>
     </div>
     )
-    */
+    
+   /*
     return (
       <div className="container">
         <Table characterData={characters} removeCharacter={removeOneCharacter} />
@@ -49,6 +49,7 @@ function MyApp() {
 
       </div>
     );
+    */
 
     function removeOneCharacter(index) {
       const updated = characters.filter((character, i) => {
