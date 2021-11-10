@@ -5,6 +5,9 @@ import Form3 from './Shows';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 
+import Table from "./Showlist";
+//import Form from "./Form";
+
 function MyApp() {
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
@@ -32,10 +35,28 @@ function MyApp() {
           <Route exact path="/Shows/:username" component={Form3} />
           <Form2 handleSubmit={updateList} />
           <Route exact path="/CreateAccount" component={Form2}/>
+
         </Switch>
       </Router>
     </div>
-  )
+    )
+    
+   /*
+    return (
+      <div className="container">
+        <Table characterData={characters} removeCharacter={removeOneCharacter} />
+        <Form handleSubmit={updateList} />
+
+      </div>
+    );
+    */
+
+    function removeOneCharacter(index) {
+      const updated = characters.filter((character, i) => {
+        return i !== index;
+      });
+      setCharacters(updated);
+    }
 
   async function fetchAll() {
     try {
@@ -49,16 +70,16 @@ function MyApp() {
   }
 
 
-  // async function makeDeleteCall(id) {
-  //   try {
-  //     const response = await axios.delete("http://localhost:5000/users/" + id);
-  //     return response;
-  //  }
-  //  catch (error) {
-  //     console.log(error);
-  //     return false;
-  //  }
-  // }
+  async function makeDeleteCall(id) {
+    try {
+      const response = await axios.delete("http://localhost:5000/users/" + id);
+      return response;
+   }
+   catch (error) {
+      console.log(error);
+      return false;
+   }
+  }
 
 
   async function makePostCall(person){
