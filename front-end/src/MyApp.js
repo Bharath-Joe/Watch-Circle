@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Form from './LogIn';
 import Form2 from './CreateAccount';
-import Form3 from './Shows';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 
@@ -32,7 +31,6 @@ function MyApp() {
       <Router>
         <Switch>
           <Route exact path="/" component={Form} />
-          <Route exact path="/Shows" component={Form3} />
           <Form2 handleSubmit={updateList} />
           <Route exact path="/CreateAccount" component={Form2}/>
 
