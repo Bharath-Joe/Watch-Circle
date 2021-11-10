@@ -67,3 +67,10 @@ class User(Model):
         for user in users:
             user["_id"] = str(user["_id"])
         return users
+
+    # def find_by_name_shows(self, name, shows):
+    #     users = list(self.collection.find({"name": name}))
+    #     for user in users:
+    #         user["_id"] = str(user["_id"])
+    #         for shows in user:
+                

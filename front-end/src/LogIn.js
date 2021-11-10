@@ -11,13 +11,11 @@ function LogIn(props){
         // const password=e.target.password.value;
         var username= document.getElementById("name").value;
         var password= document.getElementById("password").value;
-        console.log(username)
-        console.log(password)
         try {
             const response = await axios.get('http://localhost:5000/users/' + username + '/' + password);
             console.log(response.status);
             if(response.status === 200){
-                history.push('/Shows');
+                history.push('/Shows/:' + username);
             }
           }
         catch (error) {

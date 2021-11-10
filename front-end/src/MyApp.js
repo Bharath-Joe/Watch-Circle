@@ -23,12 +23,13 @@ function MyApp() {
         alert("Username already exists.");
     });
  }
+ 
   return (
     <div className="container">
       <Router>
         <Switch>
           <Route exact path="/" component={Form} />
-          <Route exact path="/Shows" component={Form3} />
+          <Route exact path="/Shows/:username" component={Form3} />
           <Form2 handleSubmit={updateList} />
           <Route exact path="/CreateAccount" component={Form2}/>
         </Switch>
