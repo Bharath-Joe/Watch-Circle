@@ -5,8 +5,8 @@ import Form3 from './Shows';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 
-import Table from "./Showlist";
-//import Form from "./Form";
+// import Table from "./Showlist";
+// import Form from "./Form";
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);
@@ -51,12 +51,12 @@ function MyApp() {
     );
     */
 
-    function removeOneCharacter(index) {
-      const updated = characters.filter((character, i) => {
-        return i !== index;
-      });
-      setCharacters(updated);
-    }
+    // function removeOneCharacter(index) {
+    //   const updated = characters.filter((character, i) => {
+    //     return i !== index;
+    //   });
+    //   setCharacters(updated);
+    // }
 
   async function fetchAll() {
     try {
@@ -70,16 +70,16 @@ function MyApp() {
   }
 
 
-  async function makeDeleteCall(id) {
-    try {
-      const response = await axios.delete("http://localhost:5000/users/" + id);
-      return response;
-   }
-   catch (error) {
-      console.log(error);
-      return false;
-   }
-  }
+  // async function makeDeleteCall(id) {
+  //   try {
+  //     const response = await axios.delete("http://localhost:5000/users/" + id);
+  //     return response;
+  //  }
+  //  catch (error) {
+  //     console.log(error);
+  //     return false;
+  //  }
+  // }
 
 
   async function makePostCall(person){
