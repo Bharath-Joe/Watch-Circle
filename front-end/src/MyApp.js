@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import Form from './LogIn';
+//import Form from './LogIn';
 import Form2 from './CreateAccount';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
+
+import Table from './Showlist';
+import Form from './Form';
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);
@@ -22,6 +25,7 @@ function MyApp() {
         alert("Username already exists.");
     });
  }
+ /*
   return (
     <div className="container">
       <Router>
@@ -33,6 +37,24 @@ function MyApp() {
       </Router>
     </div>
   )
+  */
+
+   
+    return (
+      <div className="container">
+        <Table characterData={characters} removeCharacter={removeOneCharacter} />
+        <Form handleSubmit={updateList} />
+      </div>
+    );
+    
+
+    function removeOneCharacter(index) {
+      const updated = characters.filter((character, i) => {
+        return i !== index;
+      });
+      setCharacters(updated);
+    }
+
 
   async function fetchAll() {
     try {
