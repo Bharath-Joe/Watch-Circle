@@ -4,12 +4,12 @@ import { useHistory } from 'react-router-dom';
 
 function Shows(props){
     let history = useHistory();
-    console.log(props)
+    console.log(props.location.key)
     return(
         <div>
             <center>
                 <h2> "Username" Show List ... </h2>
-                <center> <input type="button" value="Log Out" onClick={() => {history.push('/');}} /> </center>
+                <input type="button" value="Log Out" onClick={() => {history.push('/');}} />
             </center>
         </div>
         

@@ -5,8 +5,6 @@ import Form3 from './Shows';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 
-// import Table from "./Showlist";
-// import Form from "./Form";
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);
