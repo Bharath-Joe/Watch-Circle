@@ -1,9 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 
 
-function LogIn(props){
+function LogIn(){
     let history = useHistory();
 
     async function checkLogIn(){
@@ -15,6 +15,7 @@ function LogIn(props){
             const response = await axios.get('http://localhost:5000/users/' + username + '/' + password);
             console.log(response.status);
             if(response.status === 200){
+                <Link to={{pathname: '/Shows/:' + username, state: [{name: username, password: password, color: 'red'}] }}/>
                 history.push('/Shows/:' + username);
             }
           }
@@ -24,7 +25,7 @@ function LogIn(props){
             return false;
         }
     }
-      
+    
     return(
         <form>
             <center>

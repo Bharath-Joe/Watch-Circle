@@ -31,9 +31,18 @@ def get_users():
         newUser = User(userToAdd)
         newUser.save()
         resp = jsonify(newUser), 201
-        print(newUser)
-        print(resp)
+        print("User Info:" + str(newUser))
+        print("Status response: " + str(resp))
         return resp
+
+@app.route('/users/Shows/<username>', methods=['GET'])
+def get_shows(username):
+    user = User().find_by_name(username)
+    if user:
+        return jsonify(user), 200 
+    else:
+        return jsonify({"error": "User not found"}), 404
+
 
 
 @app.route('/users/<username>/<password>', methods=['GET'])
@@ -44,18 +53,8 @@ def get_user(username, password):
         if user:
             var1 = jsonify(user)
             print(var1)
-            print("USer info: " + str(var1.data))
+            print("User info: " + str(var1.data))
             print("Status: " + str(var1.status))
             return jsonify(user), 200
         else:
             return jsonify({"error": "User not found"}), 404
-
-
-# @app.route('/users/<username>/<shows>', methods=['GET'])
-# def get_user(username, shows):
-#     if request.method == 'GET':
-#         userShows = User().find_by_name_shows(username, shows)
-#         if userShows:
-#             return jsonify(userShows), 200
-#         else:
-#             return jsonify({"error": "No shows found"}), 404
