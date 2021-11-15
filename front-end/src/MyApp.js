@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import Form from './LogIn';
+// import Form from './LogIn';
 import Form2 from './CreateAccount';
 import Form3 from './Shows';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 
+import Table from './Showlist';
+import Form from './ShowAdd';
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);
@@ -25,21 +27,21 @@ function MyApp() {
     });
  }
  
-  return (
-    <div className="container">
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Form} />
-          <Route exact path="/Shows/:username" component={Form3} />
-          <Form2 handleSubmit={updateList} />
-          <Route exact path="/CreateAccount" component={Form2}/>
+  // return (
+  //   <div className="container">
+  //     <Router>
+  //       <Switch>
+  //         <Route exact path="/" component={Form} />
+  //         <Route exact path="/Shows/:username" component={Form3} />
+  //         <Form2 handleSubmit={updateList} />
+  //         <Route exact path="/CreateAccount" component={Form2}/>
 
-        </Switch>
-      </Router>
-    </div>
-    )
+  //       </Switch>
+  //     </Router>
+  //   </div>
+  //   )
     
-   /*
+
     return (
       <div className="container">
         <Table characterData={characters} removeCharacter={removeOneCharacter} />
@@ -47,14 +49,14 @@ function MyApp() {
 
       </div>
     );
-    */
 
-    // function removeOneCharacter(index) {
-    //   const updated = characters.filter((character, i) => {
-    //     return i !== index;
-    //   });
-    //   setCharacters(updated);
-    // }
+
+    function removeOneCharacter(index) {
+      const updated = characters.filter((character, i) => {
+        return i !== index;
+      });
+      setCharacters(updated);
+    }
 
   async function fetchAll() {
     try {
