@@ -4,19 +4,19 @@ import { useHistory } from 'react-router-dom';
 function CreateAccount(props) {
   let history = useHistory();
   const [person, setPerson] = useState(
-    { name: '', password: '', confirm_password: '', shows: {"TVshow": "", "Service": "", }}
+    { name: '', password: '', confirm_password: '', shows: []}
   );
   function handleChange(event) {
     const {name, value} = event.target;
     if (name === "password"){
-      setPerson({ name: person['name'], password: value, shows: {"TVshow": "", "Service": "", }});
+      setPerson({ name: person['name'], password: value, shows: []});
     }
     else{
-      setPerson({ name: value, password: person['password'], shows: {"TVshow": "", "Service": "", }});
+      setPerson({ name: value, password: person['password'], shows: []});
     }
   }
 
-function handleConfirmPassoword(event) {
+  function handleConfirmPassoword(event) {
     person['confirm_password'] = event.target.value
   };
 
@@ -27,7 +27,7 @@ function handleConfirmPassoword(event) {
       alert("Passwords don't match!")
     else
       props.handleSubmit(person);
-    setPerson({ name: '', password: '', confirm_password: '', shows: {"TVshow": "", "Service": "", }});
+    setPerson({ name: '', password: '', confirm_password: '', shows: []});
   }
 
   return ( 

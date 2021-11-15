@@ -17,18 +17,19 @@ function Shows(props){
         console.log(username);
         try {
             const response = await axios.get('http://localhost:5000/users/Shows/' + username);
-            console.log(response.data[0]["shows"]); // Gets access to shows in JSON object.
+            var count = Object.keys(response.data[0]).length;
+            console.log(count);     
+            console.log(response.data[0]); // Gets access to shows in JSON object.
           }
         catch (error) {
             console.log(error);
-            console.log(":(");
             return false;
         }
     }
     return(
         <div>
             <center>
-                <h2> "Username" Show List ... </h2>
+                <h2> Show List of {username}</h2>
                 <input type="button" value="Log Out" onClick={() => {history.push('/');}} />
             </center>
         </div>
