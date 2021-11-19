@@ -34,6 +34,7 @@ function TableFooter(props) {
 			<tr>
                 <td><button onClick={() => props.addShow()}>Add Show</button> </td>
                 <td><button onClick={() => props.filterShows()}>Filter Shows</button> </td>
+				<td><button onClick={() => props.editShows()}>Edit Shows</button> </td>
 			</tr>
 	);
     }
