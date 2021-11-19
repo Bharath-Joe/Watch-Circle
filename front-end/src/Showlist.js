@@ -22,6 +22,8 @@ function TableBody(props) {
 				<td>{row.name}</td>
 				<td>{row.genre}</td>
 				<td>{row.episode}</td>
+				<td>{row.rating}</td>
+				<td>{row.status}</td>
 				<td>
 					<button onClick={() => props.removeCharacter(index)}>
 						Delete Show

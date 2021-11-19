@@ -17,7 +17,7 @@ users = {
 }
 
 
-@app.route('/users', methods=['GET', 'POST'])
+@app.route('/users', methods=['GET', 'POST', 'DELETE'])
 def get_users():
     if request.method == 'GET':
         users = User().find_all()
@@ -34,6 +34,22 @@ def get_users():
         print(newUser)
         print(resp)
         return resp
+
+# @app.route('/users/<id>', methods=['GET', 'DELETE'])
+# def get_user(id):
+#     if id:
+#       for user in users['users_list']:
+#         if user['id'] == id:
+#            if request.method == 'GET':
+#               return user
+#            if request.method == 'DELETE':
+#               users['users_list'].remove(user)
+#               resp = jsonify(success=True)
+#               resp.status_code = 204
+#               return resp
+#       resp = jsonify({"User not found"}), 404
+#       return resp
+#     return users
 
 
 @app.route('/users/<username>/<password>', methods=['GET'])
