@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-
+const ColoredLine = ({ color }) => (
+    <hr style={{color: color, backgroundColor: color, height: 5}}/>
+);
 
 function Shows(props){
     useEffect(() => {getInfo()});
@@ -28,9 +30,11 @@ function Shows(props){
     }
     return(
         <div>
+            <input type="button" value="Log Out" onClick={() => {history.push('/');}} style={{float: 'right'}} />
+            <h1>Welcome to WatchCircle</h1>
+            <ColoredLine color='#0366ee' />
             <center>
                 <h2> Show List of {username}</h2>
-                <input type="button" value="Log Out" onClick={() => {history.push('/');}} />
             </center>
         </div>
         
