@@ -6,17 +6,33 @@ function TableHeader() {
 			<tr>
 				<th>Show Name</th>
 				<th>Genre</th>
-				<th>Episode</th>
+				<th>Episodes</th>
 				<th>Rating</th>
 				<th>Status</th>
-				<th>Delete</th>
 			</tr>
 		</thead>
 	);
 }
 
 function TableBody(props) {
-	const rows = props.characterData.map((row, index) => {
+	let urlparam = window.location.pathname;
+	var username = ""
+	for (let i = 8; i < urlparam.length; i++) {
+	  username += urlparam[i];
+	}
+	console.log(username);
+	console.log("In TableBody")
+	console.log(props.characterData); // When refresh page, doesn't recognize props.characterData
+	var myInfo;
+	for(let i = 0; i < props.characterData.length; i++){
+		// console.log(props.characterData[i]['name']);
+		if(props.characterData[i]['name'] === username){
+			myInfo = props.characterData[i]['shows']
+		}
+	}
+	console.log("In TableBody")
+	console.log(myInfo);
+	const rows = myInfo.map((row, index) => {
 		return (
 			<tr key={index}>
 				<td>{row.name}</td>
@@ -24,38 +40,17 @@ function TableBody(props) {
 				<td>{row.episode}</td>
 				<td>{row.rating}</td>
 				<td>{row.status}</td>
-				<td>
-					<button onClick={() => props.removeCharacter(index)}>
-						Delete Show
-					</button>{" "}
-				</td>
 			</tr>
 		);
 	});
 	return <tbody>{rows}</tbody>;
 }
 
-function TableFooter(props) {
-	return (
-			<tr>
-                <td><button onClick={() => props.addShow()}>Add Show</button> </td>
-                <td><button onClick={() => props.filterShows()}>Filter Shows</button> </td>
-			</tr>
-	);
-}
-
 function Table(props) {
 	return (
 		<table>
 			<TableHeader />
-			<TableBody
-				characterData={props.characterData}
-				removeCharacter={props.removeCharacter}
-			/>
-			<TableFooter
-				characterData={props.characterData}
-				addShow={props.addShow}
-			/>
+			<TableBody characterData={props.characterData}/>
 		</table>
 	);
 }

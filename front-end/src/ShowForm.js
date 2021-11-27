@@ -59,9 +59,7 @@ function Form(props) {
   };
 
   function submitForm() {
-    console.log(person);
     person["user"] = username;
-    console.log(person);
     props.handleSubmit(person);
     setPerson({ name: "", job: "", genre: "", episode: "", rating: "", status: "" });
   }

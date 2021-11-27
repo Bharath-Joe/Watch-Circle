@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from './LogIn';
 import Form2 from './CreateAccount';
-// import Form3 from './Shows';
 import Form3 from './ShowForm';
 import Table from './ShowTable';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -15,7 +14,7 @@ function MyApp() {
         setCharacters(result);
     });
   }, []);
-  function updateList(person) { //This function is to update the userList
+  function updateList(person) { 
     makePostCall(person).then(result => {
       if (result.status === 201) {
         console.log(result.data)
@@ -31,7 +30,8 @@ function MyApp() {
     console.log(person);
     updateUserShows(person).then( result => {
       if(result.status === 201){
-        console.log(result.data)
+        console.log("In updateShowsList");
+        console.log(result.data);
         setCharacters([...characters, result.data]);
       }
       else
@@ -47,7 +47,7 @@ function MyApp() {
           <Route exact path="/" component={Form} />
           <Route exact path="/Shows/:username" component={Form3}>
             <Form3 handleSubmit={updateShowsList} />
-            <Table characterData={characters} removeCharacter={removeOneCharacter} />
+            <Table characterData={characters} />
           </Route>
           <Route exact path="/CreateAccount" component={Form2}>
             <Form2 handleSubmit={updateList} />
@@ -57,12 +57,28 @@ function MyApp() {
     </div>
   )
 
-  function removeOneCharacter(index) {
-    const updated = characters.filter((character, i) => {
-      return i !== index;
-    });
-    setCharacters(updated);
-  }
+  // async function removeOneCharacter(index) {
+  //   //.then is to fetch the updated list and set the new list as result
+  //   makeDeleteCall(characters[index]['_id']).then(result => {
+  //   if (result.status === 204){
+  //     fetchAll().then(result => {
+  //       if (result)
+  //         setCharacters(result);
+  //       });
+  //     }
+  //   })
+  // }
+
+  // async function makeDeleteCall(id) {
+  //   try {
+  //     const response = await axios.delete("http://localhost:5000/users/" + id);
+  //     return response;
+  //  }
+  //  catch (error) {
+  //     console.log(error);
+  //     return false;
+  //  }
+  // }
 
 
   async function fetchAll() {
