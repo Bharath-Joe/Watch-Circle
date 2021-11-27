@@ -32,9 +32,12 @@ class Model(dict):
             self.clear()
             return resp
     
+    # db.users_list.updateOne({"name": "bharath"}, {$push: {"shows": {"eee": "asdf", "lll": "sss" }}})
     def addShow(self, showData):
-        if self.id:
-            self.collection.update({ "shows": showData }, self)
+        jsonData = self.collection.find({})
+        for user in jsonData:
+            if(user['name'] == showData['user']):
+                self.collection.update({"name": user["name"]}, {'$push': {"shows": showData}})
 
 
 class User(Model):

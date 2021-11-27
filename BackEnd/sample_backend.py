@@ -31,8 +31,8 @@ def get_users():
         newUser = User(userToAdd)
         newUser.save()
         resp = jsonify(newUser), 201
-        print("User Info:" + str(newUser))
-        print("Status response: " + str(resp))
+        # print("User Info:" + str(newUser))
+        # print("Status response: " + str(resp))
         return resp
 
 @app.route('/users/Shows/<username>', methods=['POST'])
@@ -47,14 +47,10 @@ def get_shows(username):
     elif request.method == 'POST':
         user = User().find_by_name(username)
         if user:
-            print(user)
             showDataToAdd = request.get_json()
-            print(showDataToAdd)
             newUser = User(user[0])
-            print(newUser)
             newUser.addShow(showDataToAdd)
-            resp = jsonify(user), 201
-            newUser.save()
+            resp = jsonify(newUser), 201
             return resp
         else:
             return jsonify({"error": "User not found"}), 404
