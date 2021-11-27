@@ -88,15 +88,15 @@ function MyApp() {
     }
   }
 
-  async function updateUserShows(person) {
-    try {
-      const response = await axios.post('http://localhost:5000/users' + '/Shows/' + person["user"], person);
-      return response;
-    }
-    catch (error) {
-      console.log(error);
-      return false;
-    }
+  // async function updateUserShows(person) {
+  //   try {
+  //     const response = await axios.post('http://localhost:5000/users' + '/Shows/' + person["user"], person);
+  //     return response;
+  //   }
+  //   catch (error) {
+  //     console.log(error);
+  //     return false;
+  //   }
   }
 }
 
