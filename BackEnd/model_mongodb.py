@@ -31,6 +31,11 @@ class Model(dict):
             resp = self.collection.remove({"_id": ObjectId(self._id)})
             self.clear()
             return resp
+    
+    def addShow(self, showData):
+        if self.id:
+            self.collection.update({ "shows": showData }, self)
+
 
 class User(Model):
     # to use a .env file, create .env and include a statmement MONGODB_URI='mongodb+srv://<atlas-user>:<password>@cluster0.6f9re.mongodb.net/<myFirstDatabase>?retryWrites=true&w=majority'

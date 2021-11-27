@@ -5,8 +5,11 @@ function TableHeader() {
 		<thead>
 			<tr>
 				<th>Show Name</th>
-				<th>Image/Thumbnail</th>
-				<th>Delete Show</th>
+				<th>Genre</th>
+				<th>Episode</th>
+				<th>Rating</th>
+				<th>Status</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 	);
@@ -17,7 +20,10 @@ function TableBody(props) {
 		return (
 			<tr key={index}>
 				<td>{row.name}</td>
-				<td>{row._id}</td>
+				<td>{row.genre}</td>
+				<td>{row.episode}</td>
+				<td>{row.rating}</td>
+				<td>{row.status}</td>
 				<td>
 					<button onClick={() => props.removeCharacter(index)}>
 						Delete Show
@@ -36,7 +42,7 @@ function TableFooter(props) {
                 <td><button onClick={() => props.filterShows()}>Filter Shows</button> </td>
 			</tr>
 	);
-    }
+}
 
 function Table(props) {
 	return (

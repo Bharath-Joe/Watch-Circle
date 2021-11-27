@@ -35,13 +35,29 @@ def get_users():
         print("Status response: " + str(resp))
         return resp
 
-@app.route('/users/Shows/<username>', methods=['GET'])
+@app.route('/users/Shows/<username>', methods=['POST'])
 def get_shows(username):
-    user = User().find_by_name(username)
-    if user:
-        return jsonify(user), 200 
-    else:
-        return jsonify({"error": "User not found"}), 404
+    if request.method == 'GET':
+        user = User().find_by_name(username)
+        if user:
+            print(user)
+            return jsonify(user), 200 
+        else:
+            return jsonify({"error": "User not found"}), 404
+    elif request.method == 'POST':
+        user = User().find_by_name(username)
+        if user:
+            print(user)
+            showDataToAdd = request.get_json()
+            print(showDataToAdd)
+            newUser = User(user[0])
+            print(newUser)
+            newUser.addShow(showDataToAdd)
+            resp = jsonify(user), 201
+            newUser.save()
+            return resp
+        else:
+            return jsonify({"error": "User not found"}), 404
 
 
 

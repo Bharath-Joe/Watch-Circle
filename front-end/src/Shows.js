@@ -30,7 +30,7 @@ function Shows(props){
     }
     return(
         <div>
-            <input type="button" value="Log Out" onClick={() => {history.push('/');}} style={{float: 'right'}} />
+            <input type="button" value="Log" onClick={() => {history.push('/');}} style={{float: 'right'}} />
             <h1>Welcome to WatchCircle</h1>
             <ColoredLine color='#0366ee' />
             <center>
