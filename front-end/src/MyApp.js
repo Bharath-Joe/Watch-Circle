@@ -30,7 +30,7 @@ function MyApp() {
     console.log("In updateShowsList");
     console.log(person);
     updateUserShows(person).then( result => {
-      if(result.status === 200){
+      if(result.status === 201){
         console.log(result.data)
         setCharacters([...characters, result.data]);
       }
