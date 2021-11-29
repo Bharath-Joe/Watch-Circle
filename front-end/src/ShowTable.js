@@ -9,6 +9,7 @@ function TableHeader() {
 				<th>Episodes</th>
 				<th>Rating</th>
 				<th>Status</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 	);
@@ -40,6 +41,7 @@ function TableBody(props) {
 				<td>{row.episode}</td>
 				<td>{row.rating}</td>
 				<td>{row.status}</td>
+				<td> <button onClick={() => props.removeShow(index, row.user)}>Delete</button> </td>
 			</tr>
 		);
 	});
@@ -51,7 +53,7 @@ function Table(props) {
 	return (
 		<table>
 			<TableHeader />
-			<TableBody characterData={props.characterData}/>
+			<TableBody characterData={props.characterData} removeShow={props.removeShow}/>
 		</table>
 	);
 }
