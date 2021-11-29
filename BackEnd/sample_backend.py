@@ -50,7 +50,11 @@ def get_shows(username):
             showDataToAdd = request.get_json()
             newUser = User(user[0])
             newUser.addShow(showDataToAdd)
+            newUser.reload()
             resp = jsonify(newUser), 201
+            # print("In backend - add show")
+            # print(newUser)
+            # print("----")
             return resp
         else:
             return jsonify({"error": "User not found"}), 404

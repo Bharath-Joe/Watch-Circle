@@ -37,8 +37,8 @@ class Model(dict):
         jsonData = self.collection.find({})
         for user in jsonData:
             if(user['name'] == showData['user']):
-                self.collection.update({"name": user["name"]}, {'$push': {"shows": showData}})
-
+                resp = self.collection.update({"name": user["name"]}, {'$push': {"shows": showData}})
+        return resp
 
 class User(Model):
     # to use a .env file, create .env and include a statmement MONGODB_URI='mongodb+srv://<atlas-user>:<password>@cluster0.6f9re.mongodb.net/<myFirstDatabase>?retryWrites=true&w=majority'

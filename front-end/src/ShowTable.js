@@ -47,6 +47,7 @@ function TableBody(props) {
 }
 
 function Table(props) {
+	console.log(props);
 	return (
 		<table>
 			<TableHeader />

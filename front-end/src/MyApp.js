@@ -17,7 +17,7 @@ function MyApp() {
   function updateList(person) { 
     makePostCall(person).then(result => {
       if (result.status === 201) {
-        console.log(result.data)
+        console.log(result.data);
         setCharacters([...characters, result.data]);
       }
       else
@@ -25,14 +25,14 @@ function MyApp() {
     });
   }
 
-  function updateShowsList(person) { //This function is to update the userShowList
+  function updateShowsList(show) { //This function is to update the userShowList
     console.log("In updateShowsList");
-    console.log(person);
-    updateUserShows(person).then( result => {
+    console.log(show);
+    updateUserShows(show).then( result => {
       if(result.status === 201){
         console.log("In updateShowsList");
         console.log(result.data);
-        setCharacters([...characters, result.data]);
+        setCharacters([...characters, result.data]); //Adding extra user instead of show
       }
       else
         alert("Cannot Update Shows");
@@ -45,7 +45,7 @@ function MyApp() {
       <Router>
         <Switch>
           <Route exact path="/" component={Form} />
-          <Route exact path="/Shows/:username" component={Form3}>
+          <Route exact path="/Shows/:username" component={Form3} key={document.location.href}>
             <Form3 handleSubmit={updateShowsList} />
             <Table characterData={characters} />
           </Route>
@@ -107,6 +107,8 @@ function MyApp() {
   async function updateUserShows(person) {
     try {
       const response = await axios.post('http://localhost:5000/users' + '/Shows/' + person["user"], person);
+      console.log("In updateUserShows")
+      console.log(response);
       return response;
     }
     catch (error) {
