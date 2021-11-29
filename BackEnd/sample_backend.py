@@ -50,7 +50,11 @@ def get_shows(username):
             showDataToAdd = request.get_json()
             newUser = User(user[0])
             newUser.addShow(showDataToAdd)
+            newUser.reload()
             resp = jsonify(newUser), 201
+            # print("In backend - add show")
+            # print(newUser)
+            # print("----")
             return resp
         else:
             return jsonify({"error": "User not found"}), 404
@@ -59,14 +63,14 @@ def get_shows(username):
 
 @app.route('/users/<username>/<password>', methods=['GET'])
 def get_user(username, password):
-    print("In password username route")
+    # print("In password username route")
     if request.method == 'GET':
         user = User().find_by_name_password(username, password)
         if user:
             var1 = jsonify(user)
             print(var1)
-            print("User info: " + str(var1.data))
-            print("Status: " + str(var1.status))
+            # print("User info: " + str(var1.data))
+            # print("Status: " + str(var1.status))
             return jsonify(user), 200
         else:
             return jsonify({"error": "User not found"}), 404
