@@ -23,7 +23,6 @@ def get_users():
         users = User().find_all()
         return {"users_list": users}
     if request.method == 'POST':
-        print("POST else statement")
         userToAdd = request.get_json()
         if User().find_by_name(userToAdd['name']) or userToAdd['name'] == "":
             resp = jsonify(), 401
@@ -52,9 +51,6 @@ def get_shows(username):
             newUser.addShow(showDataToAdd)
             newUser.reload()
             resp = jsonify(newUser), 201
-            # print("In backend - add show")
-            # print(newUser)
-            # print("----")
             return resp
         else:
             return jsonify({"error": "User not found"}), 404
@@ -63,7 +59,6 @@ def get_shows(username):
 
 @app.route('/users/<username>/<password>', methods=['GET'])
 def get_user(username, password):
-    # print("In password username route")
     if request.method == 'GET':
         user = User().find_by_name_password(username, password)
         if user:

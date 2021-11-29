@@ -25,14 +25,22 @@ function MyApp() {
     });
   }
 
-  function updateShowsList(show) { //This function is to update the userShowList
+  function updateShowsList(show) { 
     console.log("In updateShowsList");
     console.log(show);
     updateUserShows(show).then( result => {
       if(result.status === 201){
         console.log("In updateShowsList");
         console.log(result.data);
-        setCharacters([...characters, result.data]); //Adding extra user instead of show
+        const userNameVal = result.data['name']
+        console.log("Printing out characters: ")
+        for(let j = 0; j < characters.length; j++){
+          if(characters[j]['name'] === userNameVal){
+            console.log("location in array " + j)
+            characters.splice(j, 1);
+          }
+        }
+        setCharacters([...characters, result.data]);
       }
       else
         alert("Cannot Update Shows");
