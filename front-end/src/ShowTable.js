@@ -30,7 +30,6 @@ function TableBody(props) {
 			myInfo = props.characterData[i]['shows']
 		}
 	}
-	console.log("In TableBody")
 	console.log(myInfo);
 	const rows = myInfo.map((row, index) => {
 		return (
@@ -47,7 +46,6 @@ function TableBody(props) {
 }
 
 function Table(props) {
-	console.log(props);
 	return (
 		<table>
 			<TableHeader />

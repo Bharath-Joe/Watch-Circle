@@ -5,10 +5,10 @@ name: CSC307 Learning React CI
 
 on:
   push:
-    branches: [Bharath-Joe-patch-1]
+    branches: [FinalSprintBharath]
   # branches: [main]
   pull_request:
-    branches: [Bharath-Joe-patch-1]
+    branches: [FinalSprintBharath]
 
 jobs:
   build:
