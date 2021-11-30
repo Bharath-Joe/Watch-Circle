@@ -11,7 +11,7 @@ def test_find_users_by_name_success():
         },
     ]
     
-    assert sample_backend.User().find_by_name("s") == expected
+    assert sample_backend.User().find_by_name("test") == expected
 
 def test_find_by_name_fail():  
     expected = []
