@@ -34,6 +34,7 @@ jobs:
           pip install -r requirements.txt
         working-directory: BackEnd
       - name: Run tests with pytest
-        run: pytest
-        with: 
+        env: 
           MONGODB_URI: ${{secrets.MONGODB_URI}}
+        run: pytest
+        
