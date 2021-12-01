@@ -1,21 +1,53 @@
 import pytest
 import sample_backend
 
-def test_find_users_by_name_success():  
-    expected = [              
+
+def test_find_users_by_name_success():
+    expected = [
         {
-            '_id': '618563ffc1e3c558c47666e3', 
-            'confirm_password': 'test', 
-            'name': 'test', 
-            'password': 'test'
-        },
+            "_id": "61a6d4e02e4ccc8ab20f5929",
+            "confirm_password": "me",
+            "name": "Spencer",
+            "password": "me",
+            "shows": []
+        }
     ]
-    
-    assert sample_backend.User().find_by_name("test") == expected
-    assert sample_backend.User().find_by_password("test", "test") == expected
-    assert sample_backend.User().find_by_id("test", "618563ffc1e3c558c47666e3") == expected
+
+    assert sample_backend.User().find_by_name("Spencer") == expected
 
 
-def test_find_by_name_fail():  
+def test_find_by_name_fail():
     expected = []
     assert sample_backend.User().find_by_name("BobbyShmurda") == expected
+
+
+def test_find_by_password_success():
+    expected = [
+        {
+            "_id": "61a6d4e02e4ccc8ab20f5929",
+            "confirm_password": "me",
+            "name": "Spencer",
+            "password": "me",
+            "shows": []
+        }
+    ]
+    assert sample_backend.User().find_by_name_password("Spencer", "me") == expected
+
+
+def test_find_by_password_fail():
+    expected = []
+    assert sample_backend.User().find_by_name_password(
+        "BobbyShmurda", "Huh") == expected
+
+
+def test_find_all_success():
+    expected = [
+        {
+            "_id": "61a6d4e02e4ccc8ab20f5929",
+            "confirm_password": "me",
+            "name": "Spencer",
+            "password": "me",
+            "shows": []
+        }
+    ]
+    assert sample_backend.User().find_all() == expected

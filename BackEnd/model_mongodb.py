@@ -25,14 +25,9 @@ class Model(dict):
                 self._id = str(self._id)
                 return True
         return False
-
-    def remove(self):
-        if self._id:
-            resp = self.collection.remove({"_id": ObjectId(self._id)})
-            self.clear()
-            return resp
     
     # db.users_list.updateOne({"name": "bharath"}, {$push: {"shows": {"eee": "asdf", "lll": "sss" }}})
+
     def addShow(self, showData):
         jsonData = self.collection.find({})
         for user in jsonData:
@@ -50,7 +45,10 @@ class User(Model):
     # db_client = pymongo.MongoClient(MONGODB_URI)
 
     db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
-    collection = db_client["users"]["users_list"]  #db name is 'users' and collection name is 'users_list'
+    # db name is 'users' and collection name is 'users_list'
+
+    collection = db_client["test"]["users_list"] # for testing  
+    # collection = db_client["users"]["users_list"] # for production 
 
     def find_all(self):
         users = list(self.collection.find())
@@ -60,12 +58,6 @@ class User(Model):
 
     def find_by_name(self, name):
         users = list(self.collection.find({"name": name}))
-        for user in users:
-            user["_id"] = str(user["_id"])
-        return users
-
-    def find_by_job(self, job):
-        users = list(self.collection.find({"job": job}))
         for user in users:
             user["_id"] = str(user["_id"])
         return users
