@@ -52,7 +52,7 @@ class User(Model):
     # db_client_test = pymongo.MongoClient('mongodb+srv://Bharath1121:<password>@cluster0.dgtz8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 27017)
 
     # collection = db_client["test"]["users_list"] # for testing
-    collection = db_client["users"]["users_list"] # for production 
+    # collection = db_client["users"]["users_list"] # for production 
 
     def find_all(self):
         users = list(self.collection.find())

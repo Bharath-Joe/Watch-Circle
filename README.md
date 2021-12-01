@@ -1,17 +1,19 @@
 # Watch-Circle <br />
 ## CSC307 project <br />
 
-### Project blurb:
+## Project blurb:
 
 For avid TV watchers who want to organize their many TV shows, Watch Circle is an organizational management system that helps users keep track of streaming shows as well as their status. Unlike TVguide.com which is just a watchlist with news on popular shows, our product expands on the watchlist and allows more personal user interaction. Each user is able to create a unique account with a unique username and password (to protect their account from malicious activity and) to store their list of shows with information associated with that show. 
 
 
-### UI Prototype Link: 
+## UI Prototype Link: 
 https://www.figma.com/file/efv7KYuLqvz4EM5WINTwM4/Untitled?node-id=2%3A25
+
+Date Last Updated: October 19, 2021
 
 NOTE: This was the initial design; ideas for the design changed during the project.
 
-### Development environment set up: 
+## Development environment set up: 
 ### Frontend
 1. Make sure Node.js and npm are on the computer with the npm -version command.<br />
 2. npm install <br />
@@ -52,7 +54,7 @@ https://prettier.io/docs/en/install.html
 1. coverage run -m pytest
 2. coverage report -m model_mongodb.py
 
-### Diagrams
+## Diagrams
 Date Last Updated: October 22, 2021
 
 Use Case Diagram Link: https://drive.google.com/file/d/14rY5RwrlTYSnf7xCbdogzuB-6OGbmN7y/view?usp=sharing 
