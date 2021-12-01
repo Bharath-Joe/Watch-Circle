@@ -49,6 +49,9 @@ on:
   pull_request:
     branches: [SpencerBranch]
 
+defaults:
+  run:
+    working-directory: Backend
 jobs:
   build:
     runs-on: ubuntu-latest
