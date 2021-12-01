@@ -6,9 +6,10 @@
 
 ### UI Prototype Link: 
 https://www.figma.com/file/efv7KYuLqvz4EM5WINTwM4/Untitled?node-id=2%3A25
+
 NOTE: This was the initial design; ideas for the design changed during the project.
 
-### Development environment set up
+### Development environment set up: 
 ### Frontend
 1. Make sure Node.js and npm are on the computer with the npm -version command.<br />
 2. npm install <br />
@@ -51,7 +52,9 @@ https://prettier.io/docs/en/install.html
 
 ### Diagrams
 Date Last Updated: October 22, 2021
+
 Use Case Diagram Link: https://drive.google.com/file/d/14rY5RwrlTYSnf7xCbdogzuB-6OGbmN7y/view?usp=sharing 
 
 Date Last Updated: ____ 
+
 Class Diagram Link: ____
