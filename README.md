@@ -1,6 +1,17 @@
 # Watch-Circle <br />
 ## CSC307 project <br />
 
+### Project blurb:
+
+For avid TV watchers who want to organize their many TV shows, Watch Circle is an organizational management system that helps users keep track of streaming shows as well as their status. Unlike TVguide.com which is just a watchlist with news on popular shows, our product expands on the watchlist and allows more personal user interaction. Each user is able to create a unique account with a unique username and password (to protect their account from malicious activity and) to store their list of shows with information associated with that show. 
+
+
+### UI Prototype Link: 
+https://www.figma.com/file/efv7KYuLqvz4EM5WINTwM4/Untitled?node-id=2%3A25
+
+NOTE: This was the initial design; ideas for the design changed during the project.
+
+### Development environment set up: 
 ### Frontend
 1. Make sure Node.js and npm are on the computer with the npm -version command.<br />
 2. npm install <br />
@@ -22,7 +33,7 @@ $ pip install pycodestyle <br />
 $ pip install --upgrade pycodestyle
 <br/><br />
 
-# Prettier for javascript/React <br />
+### Prettier for javascript/React <br />
 https://prettier.io/docs/en/install.html
 #### Installation: <br />
 1. npm install --save-dev --save-exact prettier <br />
@@ -37,3 +48,15 @@ https://prettier.io/docs/en/install.html
 5. If continuous integration is setup, use npx prettier --check . <br />
     --check is like --write, but only checks that files are already formatted, rather than overwriting them.    <br />
 
+### Code Coverage:
+1. coverage run -m pytest
+2. coverage report -m model_mongodb.py
+
+### Diagrams
+Date Last Updated: October 22, 2021
+
+Use Case Diagram Link: https://drive.google.com/file/d/14rY5RwrlTYSnf7xCbdogzuB-6OGbmN7y/view?usp=sharing 
+
+Date Last Updated: ____ 
+
+Class Diagram Link: ____
