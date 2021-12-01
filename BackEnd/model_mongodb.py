@@ -45,14 +45,13 @@ class User(Model):
     load_dotenv()  # take environment variables from .env.
     MONGODB_URI = os.environ['MONGODB_URI']
     db_client = pymongo.MongoClient(MONGODB_URI)
+    collection = db_client["users"]["users_list"] # for production 
 
     # db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
     # db name is 'users' and collection name is 'users_list'
     # mongodb+srv://Bharath1121:<password>@cluster0.dgtz8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
     # db_client_test = pymongo.MongoClient('mongodb+srv://Bharath1121:<password>@cluster0.dgtz8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 27017)
-
     # collection = db_client["test"]["users_list"] # for testing
-    # collection = db_client["users"]["users_list"] # for production 
 
     def find_all(self):
         users = list(self.collection.find())
