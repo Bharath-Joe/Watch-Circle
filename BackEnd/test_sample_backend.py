@@ -5,24 +5,15 @@ import sample_backend
 def test_find_users_by_name_success():
     expected = [
         {
-            "_id": "61a6b201b8a9ab0fa24e8874",
-            "confirm_password": "test",
-            "name": "pytest",
-            "password": "test",
-            "shows": [
-                {
-                    "episode": "12",
-                    "genre": "Superhero",
-                    "name": "The Flash",
-                    "rating": "4/10",
-                    "status": "Completed",
-                    "user": "pytest"
-                }
-            ]
+            "_id": "61a6c067028d80828f5536a0",
+            "confirm_password": "test2",
+            "name": "test2",
+            "password": "test2",
+            "shows": []
         }
     ]
 
-    assert sample_backend.User().find_by_name("pytest") == expected
+    assert sample_backend.User().find_by_name("test2") == expected
 
 
 def test_find_by_name_fail():
@@ -33,19 +24,46 @@ def test_find_by_name_fail():
 def test_find_by_password_success():
     expected = [
         {
-            "_id": "6192ce36ef1f4a250f2a1497",
-            "confirm_password": "123",
-            "name": "kevin",
-            "password": "123",
+            "_id": "61a6c067028d80828f5536a0",
+            "confirm_password": "test2",
+            "name": "test2",
+            "password": "test2",
             "shows": []
         }
     ]
-    assert sample_backend.User().find_by_name_password("kevin", "123") == expected
+    assert sample_backend.User().find_by_name_password("test2", "test2") == expected
+
 
 def test_find_by_password_fail():
     expected = []
-    assert sample_backend.User().find_by_name_password("BobbyShmurda", "Huh") == expected
+    assert sample_backend.User().find_by_name_password(
+        "BobbyShmurda", "Huh") == expected
 
-# def test_find_all_success():
-#     expected = []
-#     assert sample_backend.User().find_all() == expected
+
+def test_find_all_success():
+    expected = [
+        {
+            "_id": "61a6bfc3a567f06109cf232d",
+            "confirm_password": "test",
+            "name": "test",
+            "password": "test",
+            "shows": [
+                {
+                    "episode": "test",
+                    "genre": "test",
+                    "name": "test",
+                    "rating": "test",
+                    "status": "test",
+                    "user": "test"
+                }
+            ]
+        },
+        {
+            "_id": "61a6c067028d80828f5536a0",
+            "confirm_password": "test2",
+            "name": "test2",
+            "password": "test2",
+            "shows": []
+        }
+    ]
+    assert sample_backend.User().find_all() == expected
