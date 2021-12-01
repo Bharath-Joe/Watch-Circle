@@ -1,5 +1,5 @@
-# import pytest
-# import sample_backend
+import pytest
+import sample_backend
 
 
 # def test_find_users_by_name_success():
@@ -16,6 +16,14 @@
 #                     "name": "s",
 #                     "rating": "1",
 #                     "status": "C",
+#                     "user": "Spencer"
+#                 },
+#                 {
+#                     "episode": "done",
+#                     "genre": "with",
+#                     "name": "this",
+#                     "rating": "5",
+#                     "status": "Ongoing",
 #                     "user": "Spencer"
 #                 }
 #             ]
@@ -44,6 +52,14 @@
 #                     "name": "s",
 #                     "rating": "1",
 #                     "status": "C",
+#                     "user": "Spencer"
+#                 },
+#                 {
+#                     "episode": "done",
+#                     "genre": "with",
+#                     "name": "this",
+#                     "rating": "5",
+#                     "status": "Ongoing",
 #                     "user": "Spencer"
 #                 }
 #             ]
@@ -78,7 +94,7 @@
 #         "name": "this",
 #         "rating": "5",
 #         "status": "Ongoing",
-#         "user": "Spencer"
+#         "user": "m"
 #     }
 
 #     expected = [
@@ -94,6 +110,14 @@
 #                     "name": "s",
 #                     "rating": "1",
 #                     "status": "C",
+#                     "user": "Spencer"
+#                 },
+#                 {
+#                     "episode": "done",
+#                     "genre": "with",
+#                     "name": "this",
+#                     "rating": "5",
+#                     "status": "Ongoing",
 #                     "user": "Spencer"
 #                 }
 #             ]
@@ -119,17 +143,25 @@
 #                     "rating": "5",
 #                     "status": "Ongoing",
 #                     "user": "m"
+#                 },
+#                 {
+#                     "episode": "done",
+#                     "genre": "with",
+#                     "name": "this",
+#                     "rating": "5",
+#                     "status": "Ongoing",
+#                     "user": "m"
 #                 }
 #             ]
 #         }
 #     ]
 
-#     user = sample_backend.User().find_by_name("Spencer")
+#     user = sample_backend.User().find_by_name("m")
 #     newUser = sample_backend.User(user[0])
-#     # sample_backend.User.addShow(newUser, addedShow)
+#     sample_backend.User.addShow(newUser, addedShow)
 
 #     # Checks to see if the show was added to the correct user and nowhere else
-#     # assert sample_backend.User().find_all() == expected
+#     assert sample_backend.User().find_all() == expected
 
 
 # def test_find_all_success():
@@ -147,6 +179,14 @@
 #                     "rating": "1",
 #                     "status": "C",
 #                     "user": "Spencer"
+#                 },
+#                 {
+#                     "episode": "done",
+#                     "genre": "with",
+#                     "name": "this",
+#                     "rating": "5",
+#                     "status": "Ongoing",
+#                     "user": "Spencer"
 #                 }
 #             ]
 #         },
@@ -156,6 +196,14 @@
 #             "name": "m",
 #             "password": "e",
 #             "shows": [
+#                 {
+#                     "episode": "done",
+#                     "genre": "with",
+#                     "name": "this",
+#                     "rating": "5",
+#                     "status": "Ongoing",
+#                     "user": "m"
+#                 },
 #                 {
 #                     "episode": "done",
 #                     "genre": "with",
