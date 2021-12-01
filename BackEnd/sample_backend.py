@@ -34,7 +34,7 @@ def get_users():
         # print("Status response: " + str(resp))
         return resp
 
-@app.route('/users/Shows/<username>', methods=['POST'])
+@app.route('/users/Shows/<username>', methods=['GET','POST'])
 def get_shows(username):
     if request.method == 'GET':
         user = User().find_by_name(username)
