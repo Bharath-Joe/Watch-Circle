@@ -83,18 +83,18 @@ function MyApp() {
 
   }
 
-	async function makeDeleteCall(person) {
-		try {
-			const response = await axios.delete(
-				"http://localhost:5000/users/Shows/" + person["user"]
-			);
-			return response.data;
-		} catch (error) {
-			//We're not handling errors. Just logging into the console.
-			console.log(error);
-			return false;
-		}
-	}
+	// async function makeDeleteCall(person) {
+	// 	try {
+	// 		const response = await axios.delete(
+	// 			"http://localhost:5000/users/Shows/" + person["user"]
+	// 		);
+	// 		return response.data;
+	// 	} catch (error) {
+	// 		//We're not handling errors. Just logging into the console.
+	// 		console.log(error);
+	// 		return false;
+	// 	}
+	// }
 
 	async function fetchAll() {
 		try {
