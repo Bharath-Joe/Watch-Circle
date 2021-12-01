@@ -98,16 +98,16 @@ function Form(props) {
         value={person.episode}
         onChange={handleEpisode}
       />
-      <label htmlFor="rating">Rating</label>
+      {/* <label htmlFor="rating">Rating</label>
       <input
         type="text"
         name="rating"
         id="rating"
         value={person.rating}
         onChange={handleRating}
-      />
-      {/* <label htmlFor="rating">Rating
-      <select name="rating" id="rating">
+      /> */}
+      <label htmlFor="rating">Rating
+      <select name="rating" id="rating" onChange={handleRating}>
         <option value="1">Select a Rating</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -115,7 +115,7 @@ function Form(props) {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      </label> */}
+      </label>
 
       {/* <label htmlFor="status">Status</label>
       <input
