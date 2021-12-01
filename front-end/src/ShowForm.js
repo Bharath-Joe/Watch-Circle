@@ -106,15 +106,34 @@ function Form(props) {
         value={person.rating}
         onChange={handleRating}
       />
-      <label htmlFor="status">Status</label>
+      {/* <label htmlFor="rating">Rating
+      <select name="rating" id="rating">
+        <option value="1">Select a Rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      </label> */}
+
+      {/* <label htmlFor="status">Status</label>
       <input
         type="text"
         name="status"
         id="status"
         value={person.status}
         onChange={handleStatus}
-      />
+      /> */}
+      <div>
+      <label htmlFor="status">
+      <input type="radio" name="status" id="Ongoing" value="Ongoing" onChange={handleStatus}/>Ongoing
+      </label>
+      <label htmlFor="status">
+      <input type="radio" name="status" id="Completed" value="Completed" onChange={handleStatus}/>Completed
+      </label>
       <input type="button" value="Add" onClick={submitForm} />
+      </div>
     </form>
   );
 }
