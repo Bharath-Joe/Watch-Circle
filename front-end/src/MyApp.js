@@ -55,21 +55,21 @@ function MyApp() {
 	);
 
 	function removeOneShow(index, user_Name) {
-		// const updated = characters.filter((character, i) => {
-		// 	return i !== index;
-		// });
-		// makeDeleteCall(characters[index]);
-
-		// setCharacters(updated);
+    // Loop through Users list to find the correct user to delete a show from
     for(let j = 0; j < characters.length; j++){
       if(characters[j]['name'] === user_Name){
-        console.log("location in array " + j)
-        console.log("I am at the user's shows: " + characters[j]['shows'][index].name);//.splice(j, 1);
+        // Console.log to see where I am at in the users list then user's show list
+        // console.log("I am at the user's shows: " + characters[j]['shows'][index].name);
+
+        // Actual Deletion of Show on Front End
         characters[j]['shows'].splice(index, 1);
       }
     }
     console.log("Hello working:" + user_Name + " Show Index " + index);
     setCharacters([...characters]);
+
+    // makeDeleteCall(characters[index]);
+
   }
 
 	async function makeDeleteCall(person) {
