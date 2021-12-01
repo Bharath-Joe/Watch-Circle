@@ -25,6 +25,12 @@ class Model(dict):
                 self._id = str(self._id)
                 return True
         return False
+
+    def remove(self):
+        if self._id:
+            resp = self.collection.remove({"_id": ObjectId(self._id)})
+            self.clear()
+            return resp
     
     # db.users_list.updateOne({"name": "bharath"}, {$push: {"shows": {"eee": "asdf", "lll": "sss" }}})
 
