@@ -3,6 +3,8 @@
 
 ### Project blurb:
 
+For avid TV watchers who want to organize their many TV shows, Watch Circle is an organizational management system that helps users keep track of streaming shows as well as their status. Unlike TVguide.com which is just a watchlist with news on popular shows, our product expands on the watchlist and allows more personal user interaction. Each user is able to create a unique account with a unique username and password (to protect their account from malicious activity) to store their list of shows with information associated with that show. 
+
 
 ### UI Prototype Link: 
 https://www.figma.com/file/efv7KYuLqvz4EM5WINTwM4/Untitled?node-id=2%3A25
