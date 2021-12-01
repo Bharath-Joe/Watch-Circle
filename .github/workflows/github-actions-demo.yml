@@ -10,9 +10,9 @@ on:
   pull_request:
     branches: [FinalSprintBharath]
   
-  defaults:
-    run:
-      working-directory: BackEnd
+defaults:
+  run:
+    working-directory: BackEnd
 
 jobs:
   build:
