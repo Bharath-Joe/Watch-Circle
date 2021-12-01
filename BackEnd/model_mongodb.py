@@ -47,8 +47,8 @@ class User(Model):
     db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
     # db name is 'users' and collection name is 'users_list'
 
-    # collection = db_client["test"]["users_list"] # for testing
-    collection = db_client["users"]["users_list"] # for production 
+    collection = db_client["test"]["users_list"] # for testing
+    # collection = db_client["users"]["users_list"] # for production 
 
     def find_all(self):
         users = list(self.collection.find())
