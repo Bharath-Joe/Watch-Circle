@@ -24,6 +24,7 @@ def get_users():
         return {"users_list": users}
     if request.method == 'POST':
         userToAdd = request.get_json()
+        print(userToAdd)
         if User().find_by_name(userToAdd['name']) or userToAdd['name'] == "":
             resp = jsonify(), 401
             return resp

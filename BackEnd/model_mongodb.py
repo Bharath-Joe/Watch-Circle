@@ -13,7 +13,7 @@ class Model(dict):
 
     def save(self):
         if not self._id:
-            self.collection.insert(self)
+            self.collection.insert_one(self)
         else:
             self.collection.update(
                 { "_id": ObjectId(self._id) }, self)
@@ -34,8 +34,13 @@ class Model(dict):
         jsonData = self.collection.find({})
         for user in jsonData:
             if(user['name'] == showData['user']):
-                resp = self.collection.update({"name": user["name"]}, {'$push': {"shows": showData}})
+                resp = self.collection.update_one({"name": user["name"]}, {'$push': {"shows": showData}})
         return resp
+
+    def remove(self, username):
+        if self._id:
+            self.collection.delete_one({"name": username})
+            self.clear()
 
 class User(Model):
     # to use a .env file, create .env and include a statmement MONGODB_URI='mongodb+srv://<atlas-user>:<password>@cluster0.6f9re.mongodb.net/<myFirstDatabase>?retryWrites=true&w=majority'
