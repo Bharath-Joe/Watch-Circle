@@ -62,3 +62,6 @@ Use Case Diagram Link: https://drive.google.com/file/d/14rY5RwrlTYSnf7xCbdogzuB-
 Date Last Updated: ____ 
 
 Class Diagram Link: ____
+
+## Continuous Integration
+Link to Project CI: ____

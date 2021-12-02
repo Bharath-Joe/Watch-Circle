@@ -15,8 +15,8 @@ class Model(dict):
         if not self._id:
             self.collection.insert_one(self)
         else:
-            self.collection.update(
-                { "_id": ObjectId(self._id) }, self)
+            self.collection.update_one(
+                { "_id": ObjectId(self._id) }, {"$set": {"_id":ObjectId(self._id)}}, upsert=True)
         self._id = str(self._id)
 
     def reload(self):

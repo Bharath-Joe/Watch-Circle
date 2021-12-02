@@ -8,6 +8,7 @@ def test_add_remove_user():
                  'shows': [], 'confirm_password': 'test2'}
     newUser = sample_backend.User(userToAdd)
     newUser.save()
+    newUser.save()
     newUser.remove('test2')
 
 
