@@ -46,7 +46,6 @@ function MyApp() {
         alert("Cannot Update Shows");
     });
   }
-  //Need function for updateShowList
 
   return (
     <div className="container">
@@ -65,30 +64,7 @@ function MyApp() {
     </div>
   )
 
-  // async function removeOneCharacter(index) {
-  //   //.then is to fetch the updated list and set the new list as result
-  //   makeDeleteCall(characters[index]['_id']).then(result => {
-  //   if (result.status === 204){
-  //     fetchAll().then(result => {
-  //       if (result)
-  //         setCharacters(result);
-  //       });
-  //     }
-  //   })
-  // }
-
-  // async function makeDeleteCall(id) {
-  //   try {
-  //     const response = await axios.delete("http://localhost:5000/users/" + id);
-  //     return response;
-  //  }
-  //  catch (error) {
-  //     console.log(error);
-  //     return false;
-  //  }
-  // }
-
-
+  
   async function fetchAll() {
     try {
       const response = await axios.get('http://localhost:5000/users');

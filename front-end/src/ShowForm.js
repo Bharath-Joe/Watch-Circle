@@ -14,27 +14,13 @@ function Form(props) {
     rating: "",
     status: "",
   });
-  // useEffect(() => { getInfo() });
+
   let history = useHistory();
   let urlparam = window.location.pathname;
   var username = ""
   for (let i = 8; i < urlparam.length; i++) {
     username += urlparam[i];
   }
-  // async function getInfo() {
-  //   console.log(username);
-  //   try {
-  //     const response = await axios.get('http://localhost:5000/users/Shows/' + username);
-  //     var count = Object.keys(response.data[0]).length;
-  //     console.log(count);
-  //     console.log(response.data[0]); // Gets access to shows in JSON object.
-  //   }
-  //   catch (error) {
-  //     console.log(error);
-  //     return false;
-  //   }
-  // }
-
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -98,14 +84,6 @@ function Form(props) {
         value={person.episode}
         onChange={handleEpisode}
       />
-      {/* <label htmlFor="rating">Rating</label>
-      <input
-        type="text"
-        name="rating"
-        id="rating"
-        value={person.rating}
-        onChange={handleRating}
-      /> */}
       <label htmlFor="rating">Rating
       <select name="rating" id="rating" onChange={handleRating}>
         <option value="1">Select a Rating</option>
@@ -117,14 +95,6 @@ function Form(props) {
       </select>
       </label>
 
-      {/* <label htmlFor="status">Status</label>
-      <input
-        type="text"
-        name="status"
-        id="status"
-        value={person.status}
-        onChange={handleStatus}
-      /> */}
       <div>
       <label htmlFor="status">
       <input type="radio" name="status" id="Ongoing" value="Ongoing" onChange={handleStatus}/>Ongoing

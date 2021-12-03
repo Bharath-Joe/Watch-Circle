@@ -25,7 +25,6 @@ function TableBody(props) {
 	console.log(props.characterData); // When refresh page, doesn't recognize props.characterData
 	var myInfo;
 	for(let i = 0; i < props.characterData.length; i++){
-		// console.log(props.characterData[i]['name']);
 		if(props.characterData[i]['name'] === username){
 			myInfo = props.characterData[i]['shows']
 		}
