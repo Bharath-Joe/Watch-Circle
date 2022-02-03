@@ -56,8 +56,6 @@ def get_shows(username):
         else:
             return jsonify({"error": "User not found"}), 404
 
-
-
 @app.route('/users/<username>/<password>', methods=['GET'])
 def get_user(username, password):
     if request.method == 'GET':
