@@ -11,10 +11,6 @@ from model_mongodb import User
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
 
 users = {
     'users_list':[]
@@ -24,44 +20,53 @@ users = {
 @app.route('/users', methods=['GET', 'POST'])
 def get_users():
     if request.method == 'GET':
-        search_username = request.args.get('name')
-        search_job = request.args.get('password')
-        if search_username and search_job:
-            users = User().find_by_name_job(search_username, search_job)
-        elif search_username:
-            users = User().find_by_name(search_username)
-        elif search_job:
-            users = User().find_by_job(search_job)
-        else:
-            users = User().find_all()
+        users = User().find_all()
         return {"users_list": users}
-    elif request.method == 'POST':
+    if request.method == 'POST':
         userToAdd = request.get_json()
+        print(userToAdd)
         if User().find_by_name(userToAdd['name']) or userToAdd['name'] == "":
             resp = jsonify(), 401
             return resp
         newUser = User(userToAdd)
         newUser.save()
         resp = jsonify(newUser), 201
-        print(newUser)
-        print(resp)
+        # print("User Info:" + str(newUser))
+        # print("Status response: " + str(resp))
         return resp
 
-
-@app.route('/users/<id>', methods=['GET', 'DELETE'])
-def get_user(id):
+@app.route('/users/Shows/<username>', methods=['GET','POST'])
+def get_shows(username):
     if request.method == 'GET':
-       # update for db access
-        user = User({"_id": id})
-        if user.reload():
-            return user
+        user = User().find_by_name(username)
+        if user:
+            print(user)
+            return jsonify(user), 200 
         else:
             return jsonify({"error": "User not found"}), 404
-    elif request.method == 'DELETE':
-        user = User({"_id": id})
-        if user.remove():
-            # 204 is the default code for a normal response, no other input returned
-            resp = jsonify({}), 204
+    elif request.method == 'POST':
+        user = User().find_by_name(username)
+        if user:
+            showDataToAdd = request.get_json()
+            newUser = User(user[0])
+            newUser.addShow(showDataToAdd)
+            newUser.reload()
+            resp = jsonify(newUser), 201
             return resp
+        else:
+            return jsonify({"error": "User not found"}), 404
+
+
+
+@app.route('/users/<username>/<password>', methods=['GET'])
+def get_user(username, password):
+    if request.method == 'GET':
+        user = User().find_by_name_password(username, password)
+        if user:
+            var1 = jsonify(user)
+            print(var1)
+            # print("User info: " + str(var1.data))
+            # print("Status: " + str(var1.status))
+            return jsonify(user), 200
         else:
             return jsonify({"error": "User not found"}), 404

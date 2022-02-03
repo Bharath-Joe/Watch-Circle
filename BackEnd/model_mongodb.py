@@ -1,5 +1,7 @@
+import os
 import pymongo
 from bson import ObjectId
+from dotenv import load_dotenv
 
 class Model(dict):
     """
@@ -11,10 +13,10 @@ class Model(dict):
 
     def save(self):
         if not self._id:
-            self.collection.insert(self)
+            self.collection.insert_one(self)
         else:
-            self.collection.update(
-                { "_id": ObjectId(self._id) }, self)
+            self.collection.update_one(
+                { "_id": ObjectId(self._id) }, {"$set": {"_id":ObjectId(self._id)}}, upsert=True)
         self._id = str(self._id)
 
     def reload(self):
@@ -25,24 +27,33 @@ class Model(dict):
                 self._id = str(self._id)
                 return True
         return False
+    
+    # db.users_list.updateOne({"name": "bharath"}, {$push: {"shows": {"eee": "asdf", "lll": "sss" }}})
 
-    def remove(self):
+    def addShow(self, showData):
+        jsonData = self.collection.find({})
+        for user in jsonData:
+            if(user['name'] == showData['user']):
+                resp = self.collection.update_one({"name": user["name"]}, {'$push': {"shows": showData}})
+        return resp
+
+    def remove(self, username):
         if self._id:
-            resp = self.collection.remove({"_id": ObjectId(self._id)})
+            self.collection.delete_one({"name": username})
             self.clear()
-            return resp
 
 class User(Model):
     # to use a .env file, create .env and include a statmement MONGODB_URI='mongodb+srv://<atlas-user>:<password>@cluster0.6f9re.mongodb.net/<myFirstDatabase>?retryWrites=true&w=majority'
     # with <atlas-user>, <password> and <myFirstDatabase> updated accordingly
     # make sure .env is in .gitignore so that your password isn't relased into the wild
 
-    # load_dotenv()  # take environment variables from .env.
-    # MONGODB_URI = os.environ['MONGODB_URI']
-    # db_client = pymongo.MongoClient(MONGODB_URI)
+    # db name is 'users' and collection name is 'users_list'
+    # mongodb+srv://Bharath1121:<password>@cluster0.dgtz8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
-    db_client = pymongo.MongoClient('localhost', 27017)  #change if your db is in another host and port
-    collection = db_client["users"]["users_list"]  #db name is 'users' and collection name is 'users_list'
+    load_dotenv()  # take environment variables from .env.
+    MONGODB_URI = os.environ['MONGODB_URI']
+    db_client = pymongo.MongoClient(MONGODB_URI)
+    collection = db_client["users"]["users_list"] # for production 
 
     def find_all(self):
         users = list(self.collection.find())
@@ -56,14 +67,8 @@ class User(Model):
             user["_id"] = str(user["_id"])
         return users
 
-    def find_by_job(self, job):
-        users = list(self.collection.find({"job": job}))
+    def find_by_name_password(self, name, password):
+        users = list(self.collection.find({"name": name, "password": password}))
         for user in users:
             user["_id"] = str(user["_id"])
-        return users
-
-    def find_by_name_job(self, name, job):
-        users = list(self.collection.find({"name": name, "job": job}))
-        for user in users:
-            user["_id"] = str(user["_id"])
-        return users
+        return users     
