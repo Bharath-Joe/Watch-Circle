@@ -31,8 +31,7 @@ function TableBody(props) {
          </tbody>
      );
   }
-  
-  
+  // Added bottom code to get refresh to work
   function Table (props) {
     return (
       <table>
